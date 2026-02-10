@@ -12,16 +12,11 @@ const auth = (req, res, next) => {
             throw new Error('Token required for authentication')
         }
         const decodedToken = jwt.verify(token, secret)
-        if (!decodedToken) {
-            throw {
-                status: 403,
-                message: 'Accès interdit'
-            }
-        }
+        
         req.auth = { userId: decodedToken.userId, name: decodedToken.name }
         next();
     } catch (err) {
-        res.status(401).json({ message: err.message })
+        res.status(401).json({ message: "Erreur d'authentification" })
     }
 }
 

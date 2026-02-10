@@ -28,7 +28,6 @@ const registerUser = async (userData) => {
 const loginService = async (email, password) => {
 
     const user = await findUserByEmail(email)
-    console.log("auth service 29", user);
 
     if (!user) {
         throw new Error('Getting user error')

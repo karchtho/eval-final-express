@@ -5,10 +5,10 @@ import { requireAdmin } from '../middleware/admin.middleware.js';
 
 const router = Router()
 
-router.post('/register', auth, addUser)
+router.post('/register', addUser)
 router.post('/login', loginUser)
-router.get('/', auth, requireAdmin, (req, res)=> {
-res.json('Login test')
-} )
+router.get('/', auth, requireAdmin, (req, res) => {
+    res.json('Login test')
+})
 
 export default router
