@@ -1,5 +1,14 @@
 # Eval finale express/node/prisma
 
+## Quick start
+```bash
+npm install
+npx prisma generate
+npm run dev
+docker compose up
+npx primsa studio
+```
+
 ## Configuration de l'environnement
 
 ### Initialisation

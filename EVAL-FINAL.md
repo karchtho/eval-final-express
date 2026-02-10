@@ -58,7 +58,7 @@ Votre schéma Prisma doit comporter **4 modèles** liés entre eux. Définissez 
 | coverUrl    | String?    | URL de la couverture (upload)|
 | artistId    | Int        | Clé étrangère → Artist       |
 
-### Modèle Playlist
+### Modèle Playlis
 
 | Champ       | Type    | Contraintes              |
 | ----------- | ------- | ------------------------ |

@@ -13,30 +13,53 @@ datasource db {
   provider = "postgresql"
 }
 
-model Users {
-  id Int @unique @default(autoincrement())
-  email String @unique 
-  password  String
-  name String
-  role String @default("USER")
+model User {
+  id       Int    @id @unique @default(autoincrement())
+  email    String @unique
+  password String
+  name     String
+  role     String @default("USER")
+
+  playlist Playlist[]
+
+  @@map("Users")
 }
 
-model Artists {
-  id Int @unique @default(autoincrement())
-  name String 
-  bio String?
+model Artist {
+  id       Int     @id @unique @default(autoincrement())
+  name     String
+  bio      String?
   photoUrl String?
+
+  album Album[]
+
+  @@map("Artists")
 }
 
-model Albums {
-  id Int @unique @default(autoincrement())
-  title String 
+model Album {
+  id          Int      @id @unique @default(autoincrement())
+  title       String
   description String?
-releaseDate DateTime
-coverUrl String?
+  releaseDate DateTime
+  coverUrl    String?
 
+  artist   Artist @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  artistId Int
+
+  playlist Playlist[]
+
+  @@map("Albums")
 }
 
-model Playlists {
-  id Int @unique @default(autoincrement())
+model Playlist {
+  id          Int     @id @unique @default(autoincrement())
+  name        String
+  description String?
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  album Album[]
+
+  @@map("Playlists")
 }
