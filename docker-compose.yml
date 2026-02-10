@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16
+    container_name: eval-final
+    restart: always
+    environment:
+      POSTGRES_USER: eval-final
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: eval-final
+    ports:
+      - "5445:5432"
+
+volumes:
+  postgres_data:
